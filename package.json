@@ -2,11 +2,11 @@
   "name": "movieapp",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "./node_modules/.bin/netlify-lambda serve src",
-    "build": "./node_modules/.bin/netlify-lambda build src"
+    "build": "./node_modules/.bin/netlify-lambda build src",
+    "dev": "nodemon runLocal.js"
   },
   "author": "",
   "license": "ISC",
