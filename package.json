@@ -1,19 +1,22 @@
 {
-  "name": "movieapp",
+  "name": "webmovieapp",
   "version": "1.0.0",
   "description": "",
-  "main": "src/server.js",
+  "main": "index.js",
   "scripts": {
-    "start": "./node_modules/.bin/netlify-lambda serve src",
-    "build": "./node_modules/.bin/netlify-lambda build src",
-    "dev": "nodemon runLocal.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JessevanVuuren/MovieWebApp.git"
   },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JessevanVuuren/MovieWebApp/issues"
+  },
+  "homepage": "https://github.com/JessevanVuuren/MovieWebApp#readme",
   "dependencies": {
-    "express": "^4.17.1",
-    "netlify-lambda": "^2.0.15",
-    "request": "^2.79.0",
-    "serverless-http": "^2.7.0"
+    "express": "^4.17.1"
   }
 }
