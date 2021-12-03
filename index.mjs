@@ -34,7 +34,7 @@ app.get('/movie', (req, res) => {
         htmlData = htmlData
             .replace(/{{movieName}}/g, data["title"])
             .replace(/{{posterPathW500}}/g, "https://image.tmdb.org/t/p/w500" + data["poster_path"])
-            .replace(/{{posterPathW95}}/g, "https://image.tmdb.org/t/p/w95" + data["poster_path"])
+            .replace(/{{posterPathW95}}/g, "https://image.tmdb.org/t/p/w92" + data["poster_path"])
             .replace(/{{movieDescription}}/g, data["overview"])
 
 
