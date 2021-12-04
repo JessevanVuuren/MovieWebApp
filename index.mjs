@@ -40,10 +40,11 @@ app.get('/movie', (req, res) => {
     });
 })
 
+module.exports = app;
 
-app.listen(port, () => {
-    console.log("Example app listening at http://localhost:" + port)
-})
+// app.listen(port, () => {
+//     console.log("Example app listening at http://localhost:" + port)
+// })
 
 const getImgUrl = async (movieID) => {
     const rawData = await fetch("https://api.themoviedb.org/3/movie/" + movieID + "?api_key=" + API + "&language=en-US")
