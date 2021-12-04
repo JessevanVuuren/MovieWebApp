@@ -9,12 +9,12 @@ const app = express()
 const port = process.env.PORT || 3000
 const API = process.env.KEY
 
-app.get('api/', (req, res) => {
+app.get('/', (req, res) => {
     res.send('Hello World! env is: ' + envTest)
 })
 
 
-app.get('api/movie', (req, res) => {
+app.get('/movie', (req, res) => {
     readFile(resolve('pages/index.html'), 'utf8', async (err, htmlData) => {
         if (err) {
             console.error('Error during file reading', err);
@@ -41,12 +41,9 @@ app.get('api/movie', (req, res) => {
 })
 
 
-
-export default app;
-
-// app.listen(port, () => {
-//     console.log("Example app listening at http://localhost:" + port)
-// })
+app.listen(port, () => {
+    console.log("Example app listening at http://localhost:" + port)
+})
 
 const getImgUrl = async (movieID) => {
     const rawData = await fetch("https://api.themoviedb.org/3/movie/" + movieID + "?api_key=" + API + "&language=en-US")
