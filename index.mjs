@@ -2,13 +2,12 @@ import express from 'express'
 import { resolve } from 'path'
 import { readFile } from "fs"
 import fetch from 'node-fetch';
+import { } from 'dotenv/config'
+
 const app = express()
 
 const port = process.env.PORT || 3000
-const envTest = process.env.TEST || "not"
 const API = process.env.KEY
-
-
 
 app.get('/', (req, res) => {
     res.send('Hello World! env is: ' + envTest)
@@ -28,13 +27,13 @@ app.get('/movie', (req, res) => {
         if (!movieID) return res.redirect('/');
 
         const data = await getImgUrl(movieID)
+        console.log("Request for: " + data["title"])
         
-
 
         htmlData = htmlData
             .replace(/{{movieName}}/g, data["title"])
             .replace(/{{posterPathW500}}/g, "https://image.tmdb.org/t/p/w500" + data["poster_path"])
-            .replace(/{{posterPathW95}}/g, "https://image.tmdb.org/t/p/w92" + data["poster_path"])
+            .replace(/{{posterPathW185}}/g, "https://image.tmdb.org/t/p/w185" + data["poster_path"])
             .replace(/{{movieDescription}}/g, data["overview"])
 
         return res.send(htmlData);
@@ -47,7 +46,7 @@ app.listen(port, () => {
 })
 
 const getImgUrl = async (movieID) => {
-    const rawData = await fetch("https://api.themoviedb.org/3/movie/" + API + "?api_key=648d096ec16e3f691572593e44644d30&language=en-US")
+    const rawData = await fetch("https://api.themoviedb.org/3/movie/" + movieID + "?api_key=" + API + "&language=en-US")
     const data = await rawData.json()
     return data
 }   
