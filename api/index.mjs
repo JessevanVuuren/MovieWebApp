@@ -9,12 +9,12 @@ const app = express()
 const port = process.env.PORT || 3000
 const API = process.env.KEY
 
-app.get('/', (req, res) => {
+app.get('api/', (req, res) => {
     res.send('Hello World! env is: ' + envTest)
 })
 
 
-app.get('/movie', (req, res) => {
+app.get('api/movie', (req, res) => {
     readFile(resolve('pages/index.html'), 'utf8', async (err, htmlData) => {
         if (err) {
             console.error('Error during file reading', err);
