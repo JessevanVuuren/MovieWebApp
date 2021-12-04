@@ -40,7 +40,7 @@ app.get('/movie', (req, res) => {
     });
 })
 
-module.exports = app;
+export default app;
 
 // app.listen(port, () => {
 //     console.log("Example app listening at http://localhost:" + port)
