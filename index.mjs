@@ -51,7 +51,9 @@ app.get('/movie', (req, res) => {
 app.get('/.well-known/assetlinks.json', (req, res) => {
     return res.sendFile(resolve('assetlinks.json'))
 })
-
+app.get('/.well-known/apple-app-site-association', (req, res) => {
+    return res.sendFile(resolve('apple-app-site-association'))
+})
 
 app.listen(port, () => {
     console.log("Example app listening at http://localhost:" + port)
