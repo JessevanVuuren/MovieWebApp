@@ -3,14 +3,22 @@ import { resolve } from 'path'
 import { readFile } from "fs"
 import fetch from 'node-fetch';
 import { } from 'dotenv/config'
+import { registerURIs } from "express-well-known";
 
 const app = express()
 
 const port = process.env.PORT || 3000
 const API = process.env.KEY
 
+const manifest = {
+    application: {
+        sha: "4c7e5e667bd30affa2e8c3bc8c65fd38e90912fe",
+    },
+};
+
+
 app.get('/', (req, res) => {
-    res.send('Hello World! env is: ' + envTest)
+    res.send('Hello World!')
 })
 
 
@@ -38,6 +46,10 @@ app.get('/movie', (req, res) => {
 
         return res.send(htmlData);
     });
+})
+
+app.get('/.well-known/assetlinks.json', (req, res) => {
+    return res.sendFile(resolve('assetlinks.json'))
 })
 
 
