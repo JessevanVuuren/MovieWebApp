@@ -1,49 +1,41 @@
-import express from 'express'
-import { resolve } from 'path'
-import { readFile } from "fs"
-import fetch from 'node-fetch';
 import { } from 'dotenv/config'
-import { registerURIs } from "express-well-known";
+import fetch from 'node-fetch'
+import { resolve } from 'path'
+import express from 'express'
+import { readFile, readFileSync } from "fs"
 
 const app = express()
 
 const port = process.env.PORT || 3000
 const API = process.env.KEY
 
-const manifest = {
-    application: {
-        sha: "4c7e5e667bd30affa2e8c3bc8c65fd38e90912fe",
-    },
-};
-
-
 app.get('/', (req, res) => {
     res.send('Hello World!')
 })
 
-
 app.get('/movie', (req, res) => {
+    const css = readFileSync(resolve("pages/style.css"), "utf8")
     readFile(resolve('pages/index.html'), 'utf8', async (err, htmlData) => {
         if (err) {
             console.error('Error during file reading', err);
             return res.status(404).end()
         }
 
-
         // get id
         const movieID = req.query.id;
         if (!movieID) return res.redirect('/');
 
         const data = await getImgUrl(movieID)
-        console.log("Request for: " + data["title"])
-        
+        console.log("Request for: " + data["title"])  
 
         htmlData = htmlData
             .replace(/{{movieName}}/g, data["title"])
             .replace(/{{posterPathW500}}/g, "https://image.tmdb.org/t/p/w500" + data["poster_path"])
             .replace(/{{posterPathW185}}/g, "https://image.tmdb.org/t/p/w185" + data["poster_path"])
             .replace(/{{movieDescription}}/g, data["overview"])
-
+            .replace(/{{backDropW500}}/g, "https://image.tmdb.org/t/p/w500" + data["backdrop_path"])
+            .replace("{{style}}", "<style>"+ css +"</style>")
+        
         return res.send(htmlData);
     });
 })

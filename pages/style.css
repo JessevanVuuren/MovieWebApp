@@ -1,4 +1,16 @@
+html {
+    width: 100%;
+    height: 100%;
+    display: table;
+}
+
 body {
     margin: 0px;
     padding: 0px;
+    height: 100%;
+    background-color: #03071E;
+}
+
+.BackDropImg {
+    width: 100%;
 }
