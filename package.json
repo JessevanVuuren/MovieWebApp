@@ -12,7 +12,7 @@
     "url": "git+https://github.com/JessevanVuuren/MovieWebApp.git"
   },
   "nodemonConfig": {
-    "ext": "js,html,mjs"
+    "ext": "js,html,mjs,css"
   },
   "author": "",
   "license": "ISC",

@@ -7,15 +7,23 @@
     <meta name="og:title" content="{{movieName}}" />
     <meta name="og:image" content="{{posterPathW185}}" />
     <meta name="description" content="{{movieDescription}}" />
-    <meta name="og:description" content="{{movieDescription}}" />
-    {{style}}
+    <meta name="og:description" content="{{movieDescription}}" /> {{style}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,900&family=Ubuntu:wght@700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <img class="BackDropImg" src="{{backDropW500}}" alt="{{movieName}}" >
-    <h1>{{movieName}}</h1>
+    <div class="mainImgHolder">
+        <div class="BackDropFade">
+            <img class="BackDropImg" src="{{backDropW500}}" alt="{{movieName}}">
+
+        </div>
+        <img class="posterImg" src="{{posterPathW500}}" alt="{{movieName}}">
+
+    </div>
+    <h1 class="titleText">{{movieName}}</h1>
     <p>{{movieDescription}}</p>
-    <img src="{{posterPathW500}}" alt="{{movieName}}">
 </body>
 
 </html>
