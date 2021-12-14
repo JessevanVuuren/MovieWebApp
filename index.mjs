@@ -29,14 +29,7 @@ app.get('/movie', async(req, res) => {
 
     console.log("movie: " + data["title"])
 
-    htmlPage = htmlPage
-        .replace(/{{movieName}}/g, data["title"])
-        .replace(/{{movieDescription}}/g, data["overview"])
-        .replace(/{{posterPathW500}}/g, "https://image.tmdb.org/t/p/w500" + data["poster_path"])
-        .replace(/{{posterPathW185}}/g, "https://image.tmdb.org/t/p/w185" + data["poster_path"])
-        .replace(/{{backDropW500}}/g, "https://image.tmdb.org/t/p/original" + data["backdrop_path"])
-
-    return res.send(htmlPage);
+    return res.send(await replacePage(htmlPage, data));
 })
 
 
@@ -49,6 +42,16 @@ app.get('/.well-known/apple-app-site-association', (req, res) => res.sendFile(re
 app.listen(port, () => {
     console.log("Example app listening at http://localhost:" + port)
 })
+
+
+const replacePage = async (htmlPage, data) => {
+    return htmlPage
+        .replace(/{{movieName}}/g, data["title"])
+        .replace(/{{movieDescription}}/g, data["overview"])
+        .replace(/{{posterPathW500}}/g, "https://image.tmdb.org/t/p/w500" + data["poster_path"])
+        .replace(/{{posterPathW185}}/g, "https://image.tmdb.org/t/p/w185" + data["poster_path"])
+        .replace(/{{backDropW500}}/g, "https://image.tmdb.org/t/p/original" + data["backdrop_path"])
+}
 
 const getImgUrl = async(movieID) => {
     const rawData = await fetch("https://api.themoviedb.org/3/movie/" + movieID + "?api_key=" + API + "&language=en-US")
