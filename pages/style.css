@@ -24,9 +24,16 @@ body {
 
 .BackDropImg {
     width: 100%;
-    position: relative;
+    height: 100%;
     top: 0;
     left: 0;
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    transform: scale(1.04);
 }
 
 .BackDropFade:after {
@@ -35,7 +42,8 @@ body {
     left: 0;
     top: 0;
     width: 100%;
-    height: 100%;
+    height: 104%;
+
     display: inline-block;
     background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, #03071E 100%);
     /* FF3.6+ */
@@ -54,15 +62,27 @@ body {
 }
 
 .posterImg {
-    position: absolute;
-    margin-left: 7%;
-    margin-top: -100px;
-    width: 30%;
+    width: 100%;
+    border-radius: 50px 50px 0px 0px;
 }
 
-.titleText {
-    margin-top: -30px;
+.mainBack { 
     position: absolute;
+    top:10%;
+    margin: 0px 10% 0% 10%;
+    z-index: 100;
+    border-radius: 100px 100px 0px 0px;
+    width: 80%;
+    background-color: #1C2035;
+}
+
+.descriptionText {
     color: white;
-    padding-left: 40%;
+    margin: 5%;
+    font-size: 20px;
+
+}
+.titleText {
+    text-align: center;
+    color: white;
 }

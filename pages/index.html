@@ -16,14 +16,16 @@
 <body>
     <div class="mainImgHolder">
         <div class="BackDropFade">
-            <img class="BackDropImg" src="{{backDropW500}}" alt="{{movieName}}">
+            <img class="BackDropImg" src="{{posterPathW500}}" alt="{{movieName}}">
 
         </div>
-        <img class="posterImg" src="{{posterPathW500}}" alt="{{movieName}}">
-
+        
     </div>
-    <h1 class="titleText">{{movieName}}</h1>
-    <p>{{movieDescription}}</p>
+    <div class="mainBack">
+        <img class="posterImg" src="{{backDropW500}}" alt="{{movieName}}">
+        <h1 class="titleText">{{movieName}}</h1>
+        <p class="descriptionText">{{movieDescription}}</p>
+    </div>
 </body>
 
 </html>
